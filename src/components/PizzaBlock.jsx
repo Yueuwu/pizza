@@ -1,27 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const PizzaBlock = (props) => {
+const PizzaBlock = ({i}) => {
+    const [activeIndex, setActiveIndex] = useState(0)
+    const changeActiveIndex = (i) => {
+
+    }
+    const [activeIndexT, setActiveIndexT] = useState(0)
+
+
     return (
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
-                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                src={i.imageUrl}
                 alt="PizzaBlock"
             />
-            <h4 className="pizza-block__title">{props.i.title}</h4>
+            <h4 className="pizza-block__title">{i.title}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
+                    {
+                        i.types.map((e, i) =>
+                            e === 0
+                                ?
+                                <li onClick={() => setActiveIndexT(i)}
+                                    className={activeIndexT === i ? "active" : ''}
+                                >тонкое</li>
+                                :
+                                <li onClick={() => setActiveIndexT(i)}
+                                    className={activeIndexT === i ? "active" : ''}
+                                >традиционное</li>
+                        )
+                    }
+
                 </ul>
                 <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
+                    {
+                        i.sizes.map((e, i) => <li onClick={() => setActiveIndex(i)}
+                                             className={activeIndex === i ? "active" : ''}>{e} см.</li>)
+                    }
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">от {props.i.price} ₽</div>
+                <div className="pizza-block__price">от {i.price} ₽</div>
                 <div className="button button--outline button--add">
                     <svg
                         width="12"
@@ -36,7 +56,7 @@ const PizzaBlock = (props) => {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>2</i>
+                    <i>0</i>
                 </div>
             </div>
         </div>
