@@ -2,9 +2,6 @@ import React, {useState} from 'react';
 
 const PizzaBlock = ({i}) => {
     const [activeIndex, setActiveIndex] = useState(0)
-    const changeActiveIndex = (i) => {
-
-    }
     const [activeIndexT, setActiveIndexT] = useState(0)
 
 
@@ -22,11 +19,11 @@ const PizzaBlock = ({i}) => {
                         i.types.map((e, i) =>
                             e === 0
                                 ?
-                                <li onClick={() => setActiveIndexT(i)}
+                                <li key={i} onClick={() => setActiveIndexT(i)}
                                     className={activeIndexT === i ? "active" : ''}
                                 >тонкое</li>
                                 :
-                                <li onClick={() => setActiveIndexT(i)}
+                                <li key={i} onClick={() => setActiveIndexT(i)}
                                     className={activeIndexT === i ? "active" : ''}
                                 >традиционное</li>
                         )
@@ -35,7 +32,7 @@ const PizzaBlock = ({i}) => {
                 </ul>
                 <ul>
                     {
-                        i.sizes.map((e, i) => <li onClick={() => setActiveIndex(i)}
+                        i.sizes.map((e, i) => <li key={i} onClick={() => setActiveIndex(i)}
                                              className={activeIndex === i ? "active" : ''}>{e} см.</li>)
                     }
                 </ul>
