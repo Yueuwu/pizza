@@ -38,7 +38,7 @@ const Sort = () => {
                                 <li
                                     key={i}
                                     onClick={() => selectHandler(i)}
-                                    className={selected === i && 'active'}
+                                    className={selected === i ? 'active' : ''}
                                 >{e}</li>
                             )
                         }
