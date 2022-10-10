@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 
-const Sort = () => {
+const Sort = ({value, onClickSort}) => {
     const [isVisible, setIsVisible] = useState(false)
     const list = ['популярности','цене','алфавиту']
-    const [selected, setSelected] = useState(0)
+
     const selectHandler = (i) => {
-        setSelected(i)
+        onClickSort(i)
         setIsVisible(false)
     }
-    let sortName = list[selected]
+    let sortName = list[value]
 
     return (
         <div className="sort">
@@ -26,7 +26,8 @@ const Sort = () => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => {
+                <span
+                    onClick={() => {
                     setIsVisible(!isVisible)
                 }}>{sortName}</span>
             </div>
@@ -38,7 +39,7 @@ const Sort = () => {
                                 <li
                                     key={i}
                                     onClick={() => selectHandler(i)}
-                                    className={selected === i ? 'active' : ''}
+                                    className={value === i ? 'active' : ''}
                                 >{e}</li>
                             )
                         }

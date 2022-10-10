@@ -8,20 +8,28 @@ import PizzaBlock from "../PizzaBlock";
 const Home = () => {
     const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [sort, setSort] = useState(0)
+    const [categoryId, setCategoryId] = useState(0)
+
+    const sortList = ['rating', 'price',  'title']
+
+
     useEffect(() => {
-        fetch('https://63425208ba4478d4783a7215.mockapi.io/items')
+        setIsLoading(true)
+        fetch(`https://63425208ba4478d4783a7215.mockapi.io/items?search&category=${categoryId === 0 ? '' : categoryId }&sortBy=${sortList[sort]}&order=desc`)
             .then(res => res.json())
             .then(json => {
                 setItems(json)
                 setIsLoading(false)
-            })},[])
+                // window.scrollTo(0,20)
+            })},[categoryId, sort])
 
 
     return (
             <div className="container">
                 <div className="content__top">
-                    <Categories/>
-                    <Sort/>
+                    <Categories onClickCategory={(id) => setCategoryId(id)} value={categoryId}/>
+                    <Sort onClickSort={(type) => setSort(type)} value={sort}/>
                 </div>
                 <h2 className="content__title">Все пиццы</h2>
                 <div className="content__items">
