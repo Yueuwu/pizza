@@ -1,0 +1,11 @@
+.wrap{
+    display: flex;
+    flex-direction: row;
+}
+.active{
+    font-size: 25px;
+    color: rgba(244,168,16,0.64);
+}
+div{
+    margin-right: 5px;
+}
