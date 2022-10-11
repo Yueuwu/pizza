@@ -5,7 +5,7 @@ import Sort from "../Sort";
 import Sceleton from "../PizzaBlockSceleton";
 import PizzaBlock from "../PizzaBlock";
 
-const Home = () => {
+const Home = ({searchValue}) => {
     const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [sort, setSort] = useState(0)
@@ -13,16 +13,21 @@ const Home = () => {
 
     const sortList = ['rating', 'price',  'title']
 
+    let category = categoryId > 0 ? `category=${categoryId}` : ''
+
 
     useEffect(() => {
         setIsLoading(true)
-        fetch(`https://63425208ba4478d4783a7215.mockapi.io/items?search&category=${categoryId === 0 ? '' : categoryId }&sortBy=${sortList[sort]}&order=desc`)
+        fetch(`https://63425208ba4478d4783a7215.mockapi.io/items?${category}&sortBy=${
+            sortList[sort]}&order=${sort === 2 ? 'asc' : 'desc'}&search=${
+            searchValue
+        }`)
             .then(res => res.json())
             .then(json => {
                 setItems(json)
                 setIsLoading(false)
                 // window.scrollTo(0,20)
-            })},[categoryId, sort])
+            })},[categoryId, sort, searchValue])
 
 
     return (
