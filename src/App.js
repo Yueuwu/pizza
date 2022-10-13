@@ -6,6 +6,8 @@ import Cart from "./components/pages/Cart";
 import NotFound from "./components/pages/NotFound";
 import {useState} from "react";
 
+
+
 function App() {
     const [searchValue, setSearchValue] = useState('')
 
