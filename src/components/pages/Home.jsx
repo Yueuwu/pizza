@@ -8,12 +8,14 @@ import Pagination from "../Pagination/Pagination";
 import {useDispatch, useSelector} from "react-redux";
 import {setCategoryId, setSort} from "../../redux/filterSlice";
 import axios from "axios";
+import {setPage} from "../../redux/paginationSlice";
 
 
 const Home = ({searchValue}) => {
 
     const dispatch = useDispatch()
     const {categoryId, sort} = useSelector(state => state.filter)
+    const { page } = useSelector(state => state.pagination)
 
     const onChangeCategory = (id) => {
         dispatch(setCategoryId(id))
@@ -23,10 +25,12 @@ const Home = ({searchValue}) => {
         dispatch(setSort(type))
     }
 
+    const changePage = (page) => {
+        dispatch(setPage(page))
+    }
+
     const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-
-    const [page, setPage] = useState(1)
 
     const sortList = ['rating', 'price',  'title']
 
@@ -66,7 +70,7 @@ const Home = ({searchValue}) => {
 
                 </div>
                 {
-                    pageis !== '' && <Pagination page={page} changePage={i => setPage(i)}/>
+                    pageis !== '' && <Pagination page={page} changePage={changePage}/>
                 }
             </div>
     );
