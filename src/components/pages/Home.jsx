@@ -7,6 +7,7 @@ import PizzaBlock from "../PizzaBlock";
 import Pagination from "../Pagination/Pagination";
 import {useDispatch, useSelector} from "react-redux";
 import {setCategoryId, setSort} from "../../redux/filterSlice";
+import axios from "axios";
 
 
 const Home = ({searchValue}) => {
@@ -37,16 +38,17 @@ const Home = ({searchValue}) => {
 
     useEffect(() => {
         setIsLoading(true)
-        fetch(`https://63425208ba4478d4783a7215.mockapi.io/items?${pageis}${category}&sortBy=${
-            sortList[sort]}&order=${sort === 2 ? 'asc' : 'desc'}&search=${
-            searchValue
-        }`)
-            .then(res => res.json())
-            .then(json => {
-                setItems(json)
+        axios
+            .get(`https://63425208ba4478d4783a7215.mockapi.io/items?${pageis}${category}&sortBy=${
+                sortList[sort]}&order=${sort === 2 ? 'asc' : 'desc'}&search=${
+                searchValue
+            }`)
+            .then( res => {
+                setItems(res.data)
                 setIsLoading(false)
-                // window.scrollTo(0,20)
-            })},[category, sort, searchValue, pageis])
+            })
+
+    },[category, sort, searchValue, pageis])
 
 
     return (
