@@ -23,9 +23,6 @@ const Home = ({searchValue}) => {
         dispatch(setSort(type))
     }
 
-
-
-
     const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
