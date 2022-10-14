@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 
-const Categories = ({value, onClickCategory}) => {
+const Categories = ({value, onChangeCategory}) => {
 
     const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
 
     const changeActiveIndex = (i) => {
-        onClickCategory(i)
+        onChangeCategory(i)
     }
 
     return (<div className="categories">

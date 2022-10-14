@@ -17,7 +17,7 @@ const Pagination = ({page, changePage}) => {
             <div onClick={decPage}>{'<'}</div>
             {
                 [...new Array(3)].map( (_, i) =>
-                    <div className={page === i+1 ? style.active : ''} onClick={() => changePage(i + 1)}>{i + 1}</div>
+                    <div key={i} className={page === i+1 ? style.active : ''} onClick={() => changePage(i + 1)}>{i + 1}</div>
                 )
             }
             <div onClick={incPage}>{'>'}</div>

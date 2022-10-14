@@ -5,19 +5,35 @@ import Sort from "../Sort";
 import Sceleton from "../PizzaBlockSceleton";
 import PizzaBlock from "../PizzaBlock";
 import Pagination from "../Pagination/Pagination";
+import {useDispatch, useSelector} from "react-redux";
+import {setCategoryId, setSort} from "../../redux/filterSlice";
+
 
 const Home = ({searchValue}) => {
+
+    const dispatch = useDispatch()
+    const {categoryId, sort} = useSelector(state => state.filter)
+
+    const onChangeCategory = (id) => {
+        dispatch(setCategoryId(id))
+    }
+
+    const onChangeSort = (type) => {
+        dispatch(setSort(type))
+    }
+
+
+
+
     const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [sort, setSort] = useState(0)
-    const [categoryId, setCategoryId] = useState(0)
+
     const [page, setPage] = useState(1)
 
     const sortList = ['rating', 'price',  'title']
 
     let category = categoryId > 0 ? `category=${categoryId}` : ''
     let pageis = category === '' ? `page=${page}&limit=4` : ''
-
 
     useEffect(() => {
         setIsLoading(true)
@@ -36,8 +52,8 @@ const Home = ({searchValue}) => {
     return (
             <div className="container">
                 <div className="content__top">
-                    <Categories onClickCategory={(id) => setCategoryId(id)} value={categoryId}/>
-                    <Sort onClickSort={(type) => setSort(type)} value={sort}/>
+                    <Categories onChangeCategory={onChangeCategory} value={categoryId}/>
+                    <Sort onClickSort={onChangeSort} value={sort}/>
                 </div>
                 <h2 className="content__title">Все пиццы</h2>
                 <div className="content__items">
