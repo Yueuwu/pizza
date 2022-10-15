@@ -7,6 +7,7 @@ const PizzaBlock = ({i}) => {
     const [activeType, setActiveType] = useState(0)
 
     const types = ['тонкое','традиционное']
+    const sizes = [26, 30, 40]
 
     const cartItem = useSelector(state => state.cart.items.find(obj => obj.id === i.id))
 
@@ -21,7 +22,7 @@ const PizzaBlock = ({i}) => {
             price: Number(i.price),
             img: i.imageUrl,
             type: types[activeType],
-            size: activeSize
+            size: sizes[activeSize]
         }
         dispatch(addItem(item))
     }
@@ -75,7 +76,7 @@ const PizzaBlock = ({i}) => {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>{visibleCount}</i>
+                    {visibleCount > 0 && <i>{visibleCount}</i>}
                 </div>
             </div>
         </div>

@@ -15,7 +15,10 @@ const cartSlice = createSlice({
 
         },*/
         addItem: (state, action) => {
-            const findItem = state.items.find(obj => obj.id === action.payload.id)
+            const findItem = state.items.find(obj =>
+                obj.id === action.payload.id &&
+                obj.type === action.payload.type &&
+                obj.size === action.payload.size)
             if(findItem){
                 findItem.count ++
             } else {
@@ -25,20 +28,49 @@ const cartSlice = createSlice({
                 })
             }
             state.totalPrice = state.items.reduce((sum, el) => {
-                return el.price + sum
+                return (el.price * el.count) + sum
+            }, 0)
+        },
+        deleteItem: (state, action) => {
+            const findItem = state.items.find(obj => obj.id === action.payload.id &&
+                    obj.type === action.payload.type &&
+                    obj.size === action.payload.size
+            )
+
+            if(findItem){
+                if (findItem.count > 1){
+                    findItem.count --
+                }
+                else {
+                    state.items = state.items.filter(obj =>{
+                        return obj.id !== action.payload.id ||
+                            obj.type !== action.payload.type ||
+                            obj.size !== action.payload.size
+                    })
+                }
+            }
+            state.totalPrice = state.items.reduce((sum, el) => {
+                return (el.price * el.count) + sum
             }, 0)
         },
         removeItem: (state, action) => {
-            state.items = state.items.filter(obj => obj.id !== action.payload)
+            state.items = state.items.filter(obj =>{
+                return obj.id !== action.payload.id ||
+                    obj.type !== action.payload.type ||
+                    obj.size !== action.payload.size
+            })
+            state.totalPrice = state.items.reduce((sum, el) => {
+                return (el.price * el.count) + sum
+            }, 0)
         },
         clearItems: (state, action) => {
             state.items = []
-
+            state.totalPrice = 0
         }
     }
 })
 
-export const { addItem, clearItems, removeItem } = cartSlice.actions
+export const { addItem, clearItems, removeItem, deleteItem } = cartSlice.actions
 
 export default cartSlice.reducer
 
