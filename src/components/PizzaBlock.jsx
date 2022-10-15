@@ -1,11 +1,33 @@
 import React, {useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {addItem} from "../redux/cartSlice";
 
 const PizzaBlock = ({i}) => {
-    const [activeIndex, setActiveIndex] = useState(0)
-    const [activeIndexT, setActiveIndexT] = useState(0)
+    const [activeSize, setActiveSize] = useState(0)
+    const [activeType, setActiveType] = useState(0)
 
+    const types = ['тонкое','традиционное']
+
+    const cartItem = useSelector(state => state.cart.items.find(obj => obj.id === i.id))
+
+    const dispatch = useDispatch()
+
+    const visibleCount = cartItem ? cartItem.count : 0
+
+    const addPizza = () => {
+        const item = {
+            id: i.id,
+            title: i.title,
+            price: Number(i.price),
+            img: i.imageUrl,
+            type: types[activeType],
+            size: activeSize
+        }
+        dispatch(addItem(item))
+    }
 
     return (
+
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
@@ -19,12 +41,12 @@ const PizzaBlock = ({i}) => {
                         i.types.map((e, i) =>
                             e === 0
                                 ?
-                                <li key={i} onClick={() => setActiveIndexT(i)}
-                                    className={activeIndexT === i ? "active" : ''}
+                                <li key={i} onClick={() => setActiveType(i)}
+                                    className={activeType === i ? "active" : ''}
                                 >тонкое</li>
                                 :
-                                <li key={i} onClick={() => setActiveIndexT(i)}
-                                    className={activeIndexT === i ? "active" : ''}
+                                <li key={i} onClick={() => setActiveType(i)}
+                                    className={activeType === i ? "active" : ''}
                                 >традиционное</li>
                         )
                     }
@@ -32,14 +54,14 @@ const PizzaBlock = ({i}) => {
                 </ul>
                 <ul>
                     {
-                        i.sizes.map((e, i) => <li key={i} onClick={() => setActiveIndex(i)}
-                                             className={activeIndex === i ? "active" : ''}>{e} см.</li>)
+                        i.sizes.map((e, i) => <li key={i} onClick={() => setActiveSize(i)}
+                                             className={activeSize === i ? "active" : ''}>{e} см.</li>)
                     }
                 </ul>
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {i.price} ₽</div>
-                <div className="button button--outline button--add">
+                <div onClick={addPizza} className="button button--outline button--add">
                     <svg
                         width="12"
                         height="12"
@@ -53,7 +75,7 @@ const PizzaBlock = ({i}) => {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>0</i>
+                    <i>{visibleCount}</i>
                 </div>
             </div>
         </div>

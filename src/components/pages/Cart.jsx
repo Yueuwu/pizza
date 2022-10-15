@@ -1,10 +1,14 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const Cart = () => {
+    const {items} = useSelector(state => state.cart)
+
 
     return (
         <div>
+            {items.map(e => <div>{e.title} - {e.size} - {e.type}</div>)}
             <div className="content" style={{marginTop: -50 + 'px'}}>
                 <div className="container container--cart">
                     <div className="cart">

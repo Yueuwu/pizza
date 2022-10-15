@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 const Sort = ({value, onClickSort}) => {
     const [isVisible, setIsVisible] = useState(false)
     const list = ['популярности','цене','алфавиту']
+    const sortRef = useRef()
 
     const selectHandler = (i) => {
         onClickSort(i)
@@ -10,10 +11,23 @@ const Sort = ({value, onClickSort}) => {
     }
 
     let sortName = list[value]
-    console.log(sortName)
+
+    useEffect(() => {
+        const handleClick = (e) => {
+            if (isVisible){
+                if (!e.composedPath().includes(sortRef.current)){
+                    setIsVisible(false)
+                }
+            }
+        }
+        document.body.addEventListener('click', handleClick)
+        return () => {
+            document.body.removeEventListener('click', handleClick)
+        }
+    })
 
     return (
-        <div className="sort">
+        <div ref={sortRef} className="sort">
             <div className="sort__label">
                 <svg
                     width="10"
