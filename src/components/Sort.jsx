@@ -8,7 +8,9 @@ const Sort = ({value, onClickSort}) => {
         onClickSort(i)
         setIsVisible(false)
     }
+
     let sortName = list[value]
+    console.log(sortName)
 
     return (
         <div className="sort">

@@ -6,16 +6,20 @@ import Sceleton from "../PizzaBlockSceleton";
 import PizzaBlock from "../PizzaBlock";
 import Pagination from "../Pagination/Pagination";
 import {useDispatch, useSelector} from "react-redux";
-import {setCategoryId, setSort} from "../../redux/filterSlice";
+import {setCategoryId, setPage, setSort, setFilters} from "../../redux/filterSlice";
 import axios from "axios";
-import {setPage} from "../../redux/paginationSlice";
+import qs from "qs";
+import { useNavigate } from 'react-router-dom'
 
 
 const Home = ({searchValue}) => {
 
     const dispatch = useDispatch()
-    const {categoryId, sort} = useSelector(state => state.filter)
-    const { page } = useSelector(state => state.pagination)
+    const navigate = useNavigate()
+    const {categoryId, sort, page} = useSelector(state => state.filter)
+
+    const [isSearch, setIsSearch ] = useState(false)
+    const [isMounted, setIsisMounted ] = useState(false)
 
     const onChangeCategory = (id) => {
         dispatch(setCategoryId(id))
@@ -37,7 +41,7 @@ const Home = ({searchValue}) => {
     let category = categoryId > 0 ? `category=${categoryId}` : ''
     let pageis = category === '' ? `page=${page}&limit=4` : ''
 
-    useEffect(() => {
+    const fetchPizzas = () => {
         setIsLoading(true)
         axios
             .get(`https://63425208ba4478d4783a7215.mockapi.io/items?${pageis}${category}&sortBy=${
@@ -48,8 +52,36 @@ const Home = ({searchValue}) => {
                 setItems(res.data)
                 setIsLoading(false)
             })
+    }
 
+    useEffect(() => {
+        if (window.location.search){
+            const params = qs.parse(window.location.search.substring(1))
+            dispatch(setFilters({
+                ...params
+            }))
+            setIsSearch(true)
+        }
+    }, [])
+
+    useEffect(() => {
+        if(!isSearch){
+            fetchPizzas()
+        }
+        setIsSearch(false)
     },[category, sort, searchValue, pageis])
+
+    useEffect(() => {
+        if(isMounted){
+            const queryString = qs.stringify({
+                categoryId,
+                sort,
+                page
+            })
+            navigate(`?${queryString}`)
+        }
+        setIsisMounted(true)
+    }, [categoryId, sort, searchValue, page])
 
 
     return (
