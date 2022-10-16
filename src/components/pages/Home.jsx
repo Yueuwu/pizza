@@ -41,17 +41,20 @@ const Home = ({searchValue}) => {
     let category = categoryId > 0 ? `category=${categoryId}` : ''
     let pageis = category === '' ? `page=${page}&limit=4` : ''
 
-    const fetchPizzas = () => {
+    const fetchPizzas = async () => {
         setIsLoading(true)
-        axios
-            .get(`https://63425208ba4478d4783a7215.mockapi.io/items?${pageis}${category}&sortBy=${
-                sortList[sort]}&order=${sort === 2 ? 'asc' : 'desc'}&search=${
-                searchValue
-            }`)
-            .then( res => {
-                setItems(res.data)
-                setIsLoading(false)
-            })
+        try {
+            const res = await axios.get(`https://63425208ba4478d4783a7215.mockapi.io/items?${pageis}${category}&sortBy=${
+                sortList[sort]}&order=${sort === 2 ? 'asc' : 'desc'}&search=${searchValue}`)
+            setItems(res.data)
+
+        } catch (e) {
+            alert('Произошла ошибка при загрузке пицц')
+            console.log(e)
+        } finally {
+            setIsLoading(false)
+        }
+
     }
 
     useEffect(() => {

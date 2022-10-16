@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {addItem} from "../redux/cartSlice";
 
 const PizzaBlock = ({i}) => {
@@ -9,11 +9,8 @@ const PizzaBlock = ({i}) => {
     const types = ['тонкое','традиционное']
     const sizes = [26, 30, 40]
 
-    const cartItem = useSelector(state => state.cart.items.find(obj => obj.id === i.id))
-
     const dispatch = useDispatch()
 
-    const visibleCount = cartItem ? cartItem.count : 0
 
     const addPizza = () => {
         const item = {
@@ -76,7 +73,6 @@ const PizzaBlock = ({i}) => {
                         />
                     </svg>
                     <span>Добавить</span>
-                    {visibleCount > 0 && <i>{visibleCount}</i>}
                 </div>
             </div>
         </div>
