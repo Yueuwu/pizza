@@ -7,9 +7,9 @@ import PizzaBlock from "../PizzaBlock";
 import Pagination from "../Pagination/Pagination";
 import {useDispatch, useSelector} from "react-redux";
 import {setCategoryId, setPage, setSort, setFilters} from "../../redux/filterSlice";
-import axios from "axios";
 import qs from "qs";
 import { useNavigate } from 'react-router-dom'
+import {fetchPizzas} from "../../redux/pizzaSlice";
 
 
 const Home = ({searchValue}) => {
@@ -20,6 +20,8 @@ const Home = ({searchValue}) => {
 
     const [isSearch, setIsSearch ] = useState(false)
     const [isMounted, setIsisMounted ] = useState(false)
+
+    const {items, status} = useSelector(state => state.pizza)
 
     const onChangeCategory = (id) => {
         dispatch(setCategoryId(id))
@@ -33,28 +35,18 @@ const Home = ({searchValue}) => {
         dispatch(setPage(page))
     }
 
-    const [items, setItems] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
-
     const sortList = ['rating', 'price',  'title']
 
     let category = categoryId > 0 ? `category=${categoryId}` : ''
     let pageis = category === '' ? `page=${page}&limit=4` : ''
 
-    const fetchPizzas = async () => {
-        setIsLoading(true)
-        try {
-            const res = await axios.get(`https://63425208ba4478d4783a7215.mockapi.io/items?${pageis}${category}&sortBy=${
-                sortList[sort]}&order=${sort === 2 ? 'asc' : 'desc'}&search=${searchValue}`)
-            setItems(res.data)
-
-        } catch (e) {
-            alert('Произошла ошибка при загрузке пицц')
-            console.log(e)
-        } finally {
-            setIsLoading(false)
-        }
-
+    const getPizzas = async () => {
+        dispatch(fetchPizzas({
+            pageis,
+            category,
+            sort: sortList[sort],
+            searchValue
+        }))
     }
 
     useEffect(() => {
@@ -69,7 +61,7 @@ const Home = ({searchValue}) => {
 
     useEffect(() => {
         if(!isSearch){
-            fetchPizzas()
+            getPizzas()
         }
         setIsSearch(false)
     },[category, sort, searchValue, pageis])
@@ -96,11 +88,14 @@ const Home = ({searchValue}) => {
                 <h2 className="content__title">Все пиццы</h2>
                 <div className="content__items">
                     {
-                        isLoading
+                        status === 'pending'
                             ?
                             [...new Array(4)].map((_, i) => <Sceleton key={i}/>)
                             :
                             items.map(i => <PizzaBlock key={i.id} i={i}/>)
+                    }
+                    {
+                        status === 'error' && <h1>Произошла ошибка при загрузке пицц</h1>
                     }
 
                 </div>

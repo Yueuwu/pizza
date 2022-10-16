@@ -5,10 +5,6 @@ const initialState = {
     categoryId: 0,
     sort: 0,
     page: 1
-    // sort: {
-    //     name: 'популярности',
-    //     sortProperty: 'rating'
-    // }
 }
 
 const filterSlice = createSlice({
