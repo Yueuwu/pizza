@@ -92,8 +92,9 @@ const Home = () => {
                             ?
                             [...new Array(4)].map((_, i) => <Sceleton key={i}/>)
                             :
-                            items.map(i => <Link className="pizza-block" key={i.id} to={`/pizza/${i.id}`}><PizzaBlock
-                                i={i}/></Link>)
+                            items.map(i => <PizzaBlock
+                                key={i.id}
+                                i={i}/>)
                     }
                     {
                         status === 'error' && <h1>Произошла ошибка при загрузке пицц</h1>
