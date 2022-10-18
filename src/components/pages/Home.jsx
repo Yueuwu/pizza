@@ -8,7 +8,7 @@ import Pagination from "../Pagination/Pagination";
 import {useDispatch, useSelector} from "react-redux";
 import {setCategoryId, setPage, setSort, setFilters} from "../../redux/filterSlice";
 import qs from "qs";
-import { useNavigate } from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {fetchPizzas} from "../../redux/pizzaSlice";
 
 
@@ -92,7 +92,8 @@ const Home = () => {
                             ?
                             [...new Array(4)].map((_, i) => <Sceleton key={i}/>)
                             :
-                            items.map(i => <PizzaBlock key={i.id} i={i}/>)
+                            items.map(i => <Link className="pizza-block" key={i.id} to={`/pizza/${i.id}`}><PizzaBlock
+                                i={i}/></Link>)
                     }
                     {
                         status === 'error' && <h1>Произошла ошибка при загрузке пицц</h1>

@@ -26,7 +26,7 @@ const PizzaBlock = ({i}) => {
 
     return (
 
-        <div className="pizza-block">
+        <div>
             <img
                 className="pizza-block__image"
                 src={i.imageUrl}
