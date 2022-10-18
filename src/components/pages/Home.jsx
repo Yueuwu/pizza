@@ -12,11 +12,11 @@ import { useNavigate } from 'react-router-dom'
 import {fetchPizzas} from "../../redux/pizzaSlice";
 
 
-const Home = ({searchValue}) => {
+const Home = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {categoryId, sort, page} = useSelector(state => state.filter)
+    const {categoryId, sort, page, searchValue} = useSelector(state => state.filter)
 
     const [isSearch, setIsSearch ] = useState(false)
     const [isMounted, setIsisMounted ] = useState(false)

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import Input from "./Input";
 import {useSelector} from "react-redux";
 
-const Header = ({searchValue, setSearchValue}) => {
+const Header = () => {
 
     const {items, totalPrice } = useSelector(state => state.cart)
 
@@ -22,7 +22,7 @@ const Header = ({searchValue, setSearchValue}) => {
                         </div>
                     </div>
                 </Link>
-                <Input searchValue={searchValue} setSearchValue={setSearchValue}/>
+                <Input/>
                 <div className="header__cart">
                     <Link to='/cart'>
                         <div className="button button--cart">
