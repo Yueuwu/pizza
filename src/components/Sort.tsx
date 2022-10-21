@@ -1,19 +1,23 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {setSort} from "../redux/filterSlice";
+import {useDispatch} from "react-redux";
 
-const Sort = ({value, onClickSort}) => {
+const Sort: React.FC<{value: number}> = ({value}) => {
     const [isVisible, setIsVisible] = useState(false)
     const list = ['популярности','цене','алфавиту']
-    const sortRef = useRef()
+    const sortRef = useRef<HTMLDivElement>(null)
+    const dispatch = useDispatch()
 
-    const selectHandler = (i) => {
-        onClickSort(i)
+
+    const selectHandler = (i: number) => {
+        dispatch(setSort(i))
         setIsVisible(false)
     }
 
     let sortName = list[value]
 
     useEffect(() => {
-        const handleClick = (e) => {
+        const handleClick = (e: any) => {
             if (isVisible){
                 if (!e.composedPath().includes(sortRef.current)){
                     setIsVisible(false)

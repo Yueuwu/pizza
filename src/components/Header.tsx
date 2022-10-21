@@ -4,11 +4,11 @@ import {Link} from "react-router-dom";
 import Input from "./Input";
 import {useSelector} from "react-redux";
 
-const Header = () => {
+const Header: React.FC = () => {
 
     const {items, totalPrice } = useSelector(state => state.cart)
 
-    const totalCount = items.reduce((sum, el) => sum + el.count, 0 )
+    const totalCount = items.reduce((sum: number, el: any) => sum + el.count, 0 )
 
     return (
         <div className="header">

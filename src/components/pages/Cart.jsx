@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {clearItems} from "../../redux/cartSlice";
 import ItemCart from "../itemCart";
-import CartEmpty from "../cartEmpty";
+import CartEmpty from "../cartEmpty.tsx";
 
 const Cart = () => {
     const {items, totalPrice} = useSelector(state => state.cart)

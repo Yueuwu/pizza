@@ -1,14 +1,14 @@
 import React from 'react';
 import {useEffect, useState} from "react";
-import Categories from "../Categories";
-import Sort from "../Sort";
+import Categories from "../Categories.tsx";
+import Sort from "../Sort.tsx";
 import Sceleton from "../PizzaBlockSceleton";
 import PizzaBlock from "../PizzaBlock";
 import Pagination from "../Pagination/Pagination";
 import {useDispatch, useSelector} from "react-redux";
-import {setCategoryId, setPage, setSort, setFilters} from "../../redux/filterSlice";
+import {setCategoryId, setPage, setFilters} from "../../redux/filterSlice";
 import qs from "qs";
-import {Link, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {fetchPizzas} from "../../redux/pizzaSlice";
 
 
@@ -25,10 +25,6 @@ const Home = () => {
 
     const onChangeCategory = (id) => {
         dispatch(setCategoryId(id))
-    }
-
-    const onChangeSort = (type) => {
-        dispatch(setSort(type))
     }
 
     const changePage = (page) => {
@@ -83,7 +79,7 @@ const Home = () => {
             <div className="container">
                 <div className="content__top">
                     <Categories onChangeCategory={onChangeCategory} value={categoryId}/>
-                    <Sort onClickSort={onChangeSort} value={sort}/>
+                    <Sort value={sort}/>
                 </div>
                 <h2 className="content__title">Все пиццы</h2>
                 <div className="content__items">
