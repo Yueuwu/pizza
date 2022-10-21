@@ -1,21 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchExactPizza} from "../../../redux/exactPizzaSlice";
 import style from './style.module.css'
 import Loader from "../../Loader/Loader";
 
-const ExactPizza = () => {
+const ExactPizza: React.FC = () => {
 
     const dispatch = useDispatch()
     const {item, status} = useSelector(state => state.exactPizza)
-    const {id} = useParams()
+    const {id} = useParams<{ id: string }>()
 
 
     useEffect(() => {
-        dispatch(fetchExactPizza({
-            id
-        }))
+        dispatch(fetchExactPizza({id}))
     },[id])
 
     return (
@@ -25,20 +23,20 @@ const ExactPizza = () => {
                     ?
                     <div className={style.wrap}>
                         <div className={style.side}>
-                            <Link className={style.btn}><h2>{'<'}</h2></Link>
+                            <div className={style.btn}><h2>{'<'}</h2></div>
                         </div>
                         <div className={style.center}>
                             <Loader/>
                         </div>
                         <div className={style.side}>
-                            <Link className={style.btn}><h2>{'>'}</h2></Link>
+                            <div className={style.btn}><h2>{'>'}</h2></div>
                         </div>
                     </div>
                     :
                     <div className={style.wrap}>
                         <div className={style.side}>
-                            <Link to={id > 0 && `/pizza/${Number(id) - 1}`} className={
-                                id > 0
+                            <Link to={Number(id) > 0 ? `/pizza/${Number(id) - 1}` : '/pizza/0'} className={
+                                Number(id) > 0
                                     ?
                                     style.btn
                                     :
@@ -55,8 +53,8 @@ const ExactPizza = () => {
                             <h3>Стоимость: {item.price} ₽</h3>
                         </div>
                         <div className={style.side}>
-                            <Link to={id < 9 && `/pizza/${Number(id) + 1}`} className={
-                                id < 9
+                            <Link to={Number(id) < 9 ? `/pizza/${Number(id) + 1}` : '/pizza/0'} className={
+                                Number(id) < 9
                                     ?
                                     style.btn
                                     :

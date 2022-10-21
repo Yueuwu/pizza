@@ -4,8 +4,7 @@ import Home from "./components/pages/Home";
 import {Route, Routes} from "react-router-dom";
 import Cart from "./components/pages/Cart";
 import NotFound from "./components/pages/NotFound";
-import ExactPizza from "./components/pages/ExactPizza/ExactPizza";
-
+import ExactPizza from "./components/pages/ExactPizza/ExactPizza.tsx";
 
 function App() {
 
