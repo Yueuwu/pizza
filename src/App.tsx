@@ -1,10 +1,10 @@
 import './scss/app.scss'
-import Header from "./components/Header.tsx";
+import Header from "./components/Header";
 import Home from "./components/pages/Home";
 import {Route, Routes} from "react-router-dom";
 import Cart from "./components/pages/Cart";
 import NotFound from "./components/pages/NotFound";
-import ExactPizza from "./components/pages/ExactPizza/ExactPizza.tsx";
+import ExactPizza from "./components/pages/ExactPizza/ExactPizza";
 
 function App() {
 

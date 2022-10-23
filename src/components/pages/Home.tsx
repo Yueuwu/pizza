@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect, useState} from "react";
-import Categories from "../Categories.tsx";
-import Sort from "../Sort.tsx";
+import Categories from "../Categories";
+import Sort from "../Sort";
 import Sceleton from "../PizzaBlockSceleton";
 import PizzaBlock from "../PizzaBlock";
 import Pagination from "../Pagination/Pagination";
@@ -12,7 +12,7 @@ import {useNavigate} from 'react-router-dom'
 import {fetchPizzas} from "../../redux/pizzaSlice";
 
 
-const Home = () => {
+const Home: React.FC = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -23,11 +23,11 @@ const Home = () => {
 
     const {items, status} = useSelector(state => state.pizza)
 
-    const onChangeCategory = (id) => {
+    const onChangeCategory = (id: string) => {
         dispatch(setCategoryId(id))
     }
 
-    const changePage = (page) => {
+    const changePage = (page: number) => {
         dispatch(setPage(page))
     }
 
@@ -37,6 +37,7 @@ const Home = () => {
     let pageis = category === '' ? `page=${page}&limit=4` : ''
 
     const getPizzas = async () => {
+        //@ts-ignore
         dispatch(fetchPizzas({
             pageis,
             category,
@@ -88,9 +89,9 @@ const Home = () => {
                             ?
                             [...new Array(4)].map((_, i) => <Sceleton key={i}/>)
                             :
-                            items.map(i => <PizzaBlock
+                            items.map((i: any) => <PizzaBlock
                                 key={i.id}
-                                i={i}/>)
+                                {...i}/>)
                     }
                     {
                         status === 'error' && <h1>Произошла ошибка при загрузке пицц</h1>
