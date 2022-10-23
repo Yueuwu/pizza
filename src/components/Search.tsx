@@ -3,9 +3,11 @@ import debounce from 'lodash.debounce'
 import {useDispatch} from "react-redux";
 import {setSearchValue} from "../redux/filterSlice";
 
-const Input = () => {
+const Search: React.FC = () => {
 
     const dispatch = useDispatch()
+
+    const inputRef = useRef<HTMLInputElement>(null)
 
     const [value, setValue] = useState('')
 
@@ -18,16 +20,18 @@ const Input = () => {
     )
 
 
-    const changeInput = (e) => {
+    const changeInput = (e: any) => {
         setValue(e.target.value)
         updateSearchValue(e.target.value)
     }
 
-    const inputRef = useRef()
+
+
     const clear = () => {
         dispatch(setSearchValue(''))
         setValue('')
-        inputRef.current.focus()
+        inputRef.current?.focus()
+
     }
 
     return (
@@ -43,4 +47,4 @@ const Input = () => {
     );
 };
 
-export default Input;
+export default Search;

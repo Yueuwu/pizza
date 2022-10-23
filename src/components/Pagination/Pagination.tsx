@@ -1,7 +1,12 @@
 import React from 'react';
 import style from './pagination.module.css'
 
-const Pagination = ({page, changePage}) => {
+type PaginationProps = {
+    page: number,
+    changePage: any
+}
+
+const Pagination: React.FC<PaginationProps> = ({page, changePage}) => {
     const decPage = () => {
         if (page - 1 > 0){
             changePage(page - 1)
