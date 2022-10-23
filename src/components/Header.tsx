@@ -1,7 +1,7 @@
 import React from 'react';
 import pizzaLogo from '../assets/img/pizza-logo.svg'
 import {Link} from "react-router-dom";
-import Input from "./Input";
+import Search from "./Search";
 import {useSelector} from "react-redux";
 
 const Header: React.FC = () => {
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
                         </div>
                     </div>
                 </Link>
-                <Input/>
+                <Search/>
                 <div className="header__cart">
                     <Link to='/cart'>
                         <div className="button button--cart">
