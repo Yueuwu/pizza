@@ -13,14 +13,14 @@ const Search: React.FC = () => {
 
     const updateSearchValue = useCallback(
         debounce(
-            value => dispatch(setSearchValue(value)),
+            (value: string) => dispatch(setSearchValue(value)),
             600
         ),
         []
     )
 
 
-    const changeInput = (e: any) => {
+    const changeInput = (e:  React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value)
         updateSearchValue(e.target.value)
     }
@@ -39,7 +39,7 @@ const Search: React.FC = () => {
             <input
                 ref={inputRef}
                 autoFocus
-                onInput={changeInput}
+                onChange={changeInput}
                 value={value}
                 placeholder='Поиск пиццы...'/>
             <button onClick={clear}>Очистить</button>

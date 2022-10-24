@@ -23,7 +23,7 @@ const Home: React.FC = () => {
 
     const {items, status} = useSelector(state => state.pizza)
 
-    const onChangeCategory = (id: string) => {
+    const onChangeCategory = (id: number) => {
         dispatch(setCategoryId(id))
     }
 

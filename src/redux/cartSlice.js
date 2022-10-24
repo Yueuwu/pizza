@@ -59,7 +59,7 @@ const cartSlice = createSlice({
                 return (el.price * el.count) + sum
             }, 0)
         },
-        clearItems: (state, action) => {
+        clearItems: (state) => {
             state.items = []
             state.totalPrice = 0
         }

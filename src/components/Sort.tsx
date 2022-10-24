@@ -2,12 +2,17 @@ import React, {useEffect, useRef, useState} from 'react';
 import {setSort} from "../redux/filterSlice";
 import {useDispatch} from "react-redux";
 
+type HTMLElementEvent<T extends HTMLElement> = Event & {
+    target: T;
+}
+
 const Sort: React.FC<{value: number}> = ({value}) => {
+
     const [isVisible, setIsVisible] = useState(false)
-    const list = ['популярности','цене','алфавиту']
     const sortRef = useRef<HTMLDivElement>(null)
     const dispatch = useDispatch()
 
+    const list = ['популярности','цене','алфавиту']
 
     const selectHandler = (i: number) => {
         dispatch(setSort(i))
@@ -17,9 +22,10 @@ const Sort: React.FC<{value: number}> = ({value}) => {
     let sortName = list[value]
 
     useEffect(() => {
-        const handleClick = (e: any) => {
+        const handleClick = (e: MouseEvent) => {
+            const _e = e as MouseEvent & HTMLElementEvent<HTMLBodyElement>
             if (isVisible){
-                if (!e.composedPath().includes(sortRef.current)){
+                if (sortRef.current && !_e.composedPath().includes(sortRef.current)){
                     setIsVisible(false)
                 }
             }
