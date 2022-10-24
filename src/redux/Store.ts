@@ -13,3 +13,5 @@ export const store = configureStore({
         exactPizza
     },
 })
+
+export type RootState = ReturnType<typeof store.getState>

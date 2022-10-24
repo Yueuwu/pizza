@@ -23,9 +23,8 @@ const Sort: React.FC<{value: number}> = ({value}) => {
 
     useEffect(() => {
         const handleClick = (e: MouseEvent) => {
-            const _e = e as MouseEvent & HTMLElementEvent<HTMLBodyElement>
             if (isVisible){
-                if (sortRef.current && !_e.composedPath().includes(sortRef.current)){
+                if (sortRef.current && !e.composedPath().includes(sortRef.current)){
                     setIsVisible(false)
                 }
             }
