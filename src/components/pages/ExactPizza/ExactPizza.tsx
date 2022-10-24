@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchExactPizza} from "../../../redux/exactPizzaSlice";
+import {exactPizzaSelector, fetchExactPizza} from "../../../redux/exactPizzaSlice";
 import style from './style.module.css'
 import Loader from "../../Loader/Loader";
 
 const ExactPizza: React.FC = () => {
 
     const dispatch = useDispatch()
-    const {item, status} = useSelector(state => state.exactPizza)
+    const {item, status} = useSelector(exactPizzaSelector)
     const {id} = useParams<{ id: string }>()
 
 

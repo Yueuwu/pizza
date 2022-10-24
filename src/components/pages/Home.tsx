@@ -6,22 +6,22 @@ import Sceleton from "../PizzaBlockSceleton";
 import PizzaBlock from "../PizzaBlock";
 import Pagination from "../Pagination/Pagination";
 import {useDispatch, useSelector} from "react-redux";
-import {setCategoryId, setPage, setFilters} from "../../redux/filterSlice";
+import {setCategoryId, setPage, setFilters, filterSelector} from "../../redux/filterSlice";
 import qs from "qs";
 import {useNavigate} from 'react-router-dom'
-import {fetchPizzas} from "../../redux/pizzaSlice";
+import {fetchPizzas, pizzaSelector} from "../../redux/pizzaSlice";
 
 
 const Home: React.FC = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {categoryId, sort, page, searchValue} = useSelector(state => state.filter)
+    const {categoryId, sort, page, searchValue} = useSelector(filterSelector)
 
     const [isSearch, setIsSearch ] = useState(false)
     const [isMounted, setIsisMounted ] = useState(false)
 
-    const {items, status} = useSelector(state => state.pizza)
+    const {items, status} = useSelector(pizzaSelector)
 
     const onChangeCategory = (id: number) => {
         dispatch(setCategoryId(id))
