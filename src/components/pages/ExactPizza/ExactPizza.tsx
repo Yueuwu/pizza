@@ -11,10 +11,14 @@ const ExactPizza: React.FC = () => {
     const {item, status} = useSelector(exactPizzaSelector)
     const {id} = useParams<{ id: string }>()
 
-
     useEffect(() => {
-        dispatch(fetchExactPizza({id}))
-    },[id])
+
+            dispatch(fetchExactPizza({id}))
+
+    }, [id])
+
+
+
 
     return (
         <div className='content'>
@@ -53,7 +57,7 @@ const ExactPizza: React.FC = () => {
                             <h3>Стоимость: {item.price} ₽</h3>
                         </div>
                         <div className={style.side}>
-                            <Link to={Number(id) < 9 ? `/pizza/${Number(id) + 1}` : '/pizza/0'} className={
+                            <Link to={Number(id) < 9 ? `/pizza/${Number(id) + 1}` : '/pizza/9'} className={
                                 Number(id) < 9
                                     ?
                                     style.btn

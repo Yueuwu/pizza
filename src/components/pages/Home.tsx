@@ -37,7 +37,7 @@ const Home: React.FC = () => {
     let pageis = category === '' ? `page=${page}&limit=4` : ''
 
     const getPizzas = async () => {
-        //@ts-ignore
+
         dispatch(fetchPizzas({
             pageis,
             category,

@@ -2,15 +2,38 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 import {RootState} from "./Store";
 
+
 export const fetchExactPizza = createAsyncThunk('pizza/fetchPizza',
-    async ({id}) => {
-        const {data} = await axios.get(`https://63425208ba4478d4783a7215.mockapi.io/items/${id}`)
+    async ({id}: {id: string }) => {
+        const {data} = await axios.get<Pizza>(`https://63425208ba4478d4783a7215.mockapi.io/items/${id}`)
         return data
     }
 )
 
-const initialState = {
-    item: [],
+type Pizza = {
+    id: string,
+    title: string,
+    price: number,
+    imageUrl: string,
+    types: number[],
+    sizes: number[],
+    rating: number
+}
+interface PizzaSliceState {
+    status: 'pending' | 'success' | 'error',
+    item: Pizza
+}
+
+const initialState: PizzaSliceState = {
+    item: {
+        id: '',
+        title: '',
+        price: 0,
+        imageUrl: '',
+        types: [],
+        sizes: [],
+        rating: 0
+    },
     status: 'pending',
 }
 
@@ -19,7 +42,38 @@ const exactPizzaSlice = createSlice({
     initialState,
     reducers: {
     },
-    extraReducers: {
+    extraReducers: (builder) => {
+        builder.addCase(fetchExactPizza.pending, (state) => {
+            state.status = 'pending'
+            state.item = {
+                id: '',
+                title: '',
+                price: 0,
+                imageUrl: '',
+                types: [],
+                sizes: [],
+                rating: 0
+            }
+        })
+        builder.addCase(fetchExactPizza.fulfilled, (state, action) => {
+            state.status = 'success'
+            state.item = action.payload
+        })
+        builder.addCase(fetchExactPizza.rejected, (state, action) => {
+            state.status = 'error'
+            state.item = {
+                id: '',
+                title: '',
+                price: 0,
+                imageUrl: '',
+                types: [],
+                sizes: [],
+                rating: 0
+            }
+            console.log(action.payload)
+        })
+    }
+   /* extraReducers: {
         [fetchExactPizza.pending]: (state) => {
             state.status = 'pending'
             state.item = []
@@ -33,7 +87,7 @@ const exactPizzaSlice = createSlice({
             state.item = []
             console.log(action.payload)
         }
-    }
+    }*/
 })
 
 export const exactPizzaSelector = (state: RootState) => state.exactPizza

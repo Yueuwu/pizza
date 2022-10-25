@@ -19,7 +19,11 @@ const ItemCart: React.FC<ItemCartProps> = ({id, title, type, size, count, price,
         const item = {
             id,
             type,
-            size
+            size,
+            title,
+            count,
+            price,
+            img
         }
         dispatch(addItem(item))
     }
@@ -27,7 +31,11 @@ const ItemCart: React.FC<ItemCartProps> = ({id, title, type, size, count, price,
         const item = {
             id,
             type,
-            size
+            size,
+            title,
+            count,
+            price,
+            img
         }
         dispatch(deleteItem(item))
     }
@@ -35,7 +43,11 @@ const ItemCart: React.FC<ItemCartProps> = ({id, title, type, size, count, price,
         const item = {
             id,
             type,
-            size
+            size,
+            title,
+            count,
+            price,
+            img
         }
         dispatch(removeItem(item))
     }
