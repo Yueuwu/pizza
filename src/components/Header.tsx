@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import pizzaLogo from '../assets/img/pizza-logo.svg'
 import {Link, useLocation} from "react-router-dom";
-import Search from "./Search";
+import Search from "./pages/Search/Search";
 import {useSelector} from "react-redux";
 import {cartSelector} from "../redux/cartSlice";
 import {useAppDispatch} from "../redux/Store";
@@ -10,12 +10,22 @@ import {removeFilters} from "../redux/filterSlice";
 const Header: React.FC = () => {
 
     const {items, totalPrice } = useSelector(cartSelector)
+    const [itemsMounted, setItemsMounted] = useState(false)
+
     const location = useLocation()
     const dispatch = useAppDispatch()
 
     const clearFilters = () => {
         dispatch(removeFilters())
     }
+
+    useEffect(() => {
+        if (itemsMounted){
+            const json = JSON.stringify(items)
+            localStorage.setItem('cart', json)
+        }
+        setItemsMounted(true)
+    }, [items])
 
     const totalCount = items.reduce((sum: number, el: any) => sum + el.count, 0 )
 
