@@ -4,17 +4,24 @@ import {Link} from "react-router-dom";
 import Search from "./Search";
 import {useSelector} from "react-redux";
 import {cartSelector} from "../redux/cartSlice";
+import {useAppDispatch} from "../redux/Store";
+import {removeFilters} from "../redux/filterSlice";
 
 const Header: React.FC = () => {
 
     const {items, totalPrice } = useSelector(cartSelector)
+    const dispatch = useAppDispatch()
+
+    const clearFilters = () => {
+        dispatch(removeFilters())
+    }
 
     const totalCount = items.reduce((sum: number, el: any) => sum + el.count, 0 )
 
     return (
         <div className="header">
             <div className="container">
-                <Link to='/'>
+                <Link onClick={clearFilters} to='/'>
                     <div className="header__logo">
                         <img width="38" src={pizzaLogo} alt="Pizza logo"/>
                         <div>
