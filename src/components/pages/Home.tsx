@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useEffect, useState} from "react";
 import Categories from "../Categories";
 import Sort from "../Sort";
@@ -24,9 +24,9 @@ const Home: React.FC = () => {
 
     const {items, status} = useSelector(pizzaSelector)
 
-    const onChangeCategory = (id: number) => {
+    const onChangeCategory = useCallback((id: number) => {
         dispatch(setCategoryId(id))
-    }
+    }, [])
 
     const changePage = (page: number) => {
         dispatch(setPage(page))

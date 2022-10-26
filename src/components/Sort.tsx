@@ -6,7 +6,7 @@ type HTMLElementEvent<T extends HTMLElement> = Event & {
     target: T;
 }
 
-const Sort: React.FC<{value: number}> = ({value}) => {
+const Sort: React.FC<{value: number}> = React.memo(({value}) => {
 
     const [isVisible, setIsVisible] = useState(false)
     const sortRef = useRef<HTMLDivElement>(null)
@@ -74,6 +74,6 @@ const Sort: React.FC<{value: number}> = ({value}) => {
 
         </div>
     );
-};
+});
 
 export default Sort;
