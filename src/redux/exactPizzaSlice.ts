@@ -19,8 +19,15 @@ type Pizza = {
     sizes: number[],
     rating: number
 }
+
+export enum Status {
+    PENDING = 'pending',
+    SUCCESS = 'success',
+    ERROR = 'error'
+}
+
 interface PizzaSliceState {
-    status: 'pending' | 'success' | 'error',
+    status: Status,
     item: Pizza
 }
 
@@ -34,7 +41,7 @@ const initialState: PizzaSliceState = {
         sizes: [],
         rating: 0
     },
-    status: 'pending',
+    status: Status.PENDING,
 }
 
 const exactPizzaSlice = createSlice({
@@ -44,7 +51,7 @@ const exactPizzaSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchExactPizza.pending, (state) => {
-            state.status = 'pending'
+            state.status = Status.PENDING
             state.item = {
                 id: '',
                 title: '',
@@ -56,11 +63,11 @@ const exactPizzaSlice = createSlice({
             }
         })
         builder.addCase(fetchExactPizza.fulfilled, (state, action) => {
-            state.status = 'success'
+            state.status = Status.SUCCESS
             state.item = action.payload
         })
         builder.addCase(fetchExactPizza.rejected, (state, action) => {
-            state.status = 'error'
+            state.status = Status.ERROR
             state.item = {
                 id: '',
                 title: '',

@@ -5,16 +5,17 @@ import Sort from "../Sort";
 import Sceleton from "../PizzaBlockSceleton";
 import PizzaBlock from "../PizzaBlock";
 import Pagination from "../Pagination/Pagination";
-import {useDispatch, useSelector} from "react-redux";
-import {setCategoryId, setPage, setFilters, filterSelector} from "../../redux/filterSlice";
+import {useSelector} from "react-redux";
+import {setCategoryId, setPage, setFilters, filterSelector, FilterSliceState} from "../../redux/filterSlice";
 import qs from "qs";
 import {useNavigate} from 'react-router-dom'
 import {fetchPizzas, pizzaSelector} from "../../redux/pizzaSlice";
+import {useAppDispatch} from "../../redux/Store";
 
 
 const Home: React.FC = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const {categoryId, sort, page, searchValue} = useSelector(filterSelector)
 
@@ -37,7 +38,6 @@ const Home: React.FC = () => {
     let pageis = category === '' ? `page=${page}&limit=4` : ''
 
     const getPizzas = async () => {
-
         dispatch(fetchPizzas({
             pageis,
             category,
@@ -48,9 +48,12 @@ const Home: React.FC = () => {
 
     useEffect(() => {
         if (window.location.search){
-            const params = qs.parse(window.location.search.substring(1))
+            const params = qs.parse(window.location.search.substring(1)) as unknown as FilterSliceState
             dispatch(setFilters({
-                ...params
+                page: params.page,
+                categoryId: params.categoryId,
+                sort: params.sort,
+                searchValue: params.searchValue,
             }))
             setIsSearch(true)
         }
@@ -68,7 +71,8 @@ const Home: React.FC = () => {
             const queryString = qs.stringify({
                 categoryId,
                 sort,
-                page
+                page,
+                searchValue
             })
             navigate(`?${queryString}`)
         }
