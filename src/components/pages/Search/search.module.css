@@ -1,0 +1,30 @@
+.input{
+    border: 1px solid #7b7b7b;
+    border-radius: 10px;
+    padding: 5px;
+    width: 80%;
+}
+.btn{
+    border: none;
+    border-radius: 10px;
+    margin-left: 5px;
+    background: #fe5f1e;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background 300ms ease;
+}
+.btn:hover{
+    background: #7b7b7b;
+}
+.btn:active{
+    scale: 0.9;
+}
+.wrap{
+    background: rgba(254, 95, 30, 0.49);
+    padding: 7px;
+    border-radius: 10px;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}

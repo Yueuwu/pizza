@@ -1,7 +1,8 @@
 import React, {useCallback, useRef, useState} from 'react';
 import debounce from 'lodash.debounce'
 import {useDispatch} from "react-redux";
-import {setSearchValue} from "../redux/filterSlice";
+import {setSearchValue} from "../../../redux/filterSlice";
+import style from './search.module.css'
 
 const Search: React.FC = () => {
 
@@ -35,14 +36,14 @@ const Search: React.FC = () => {
     }
 
     return (
-        <div>
-            <input
+        <div className={style.wrap}>
+            <input className={style.input}
                 ref={inputRef}
                 autoFocus
                 onChange={changeInput}
                 value={value}
                 placeholder='Поиск пиццы...'/>
-            <button onClick={clear}>Очистить</button>
+            <button className={style.btn} onClick={clear}>Очистить</button>
         </div>
     );
 };
