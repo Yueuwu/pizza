@@ -1,6 +1,6 @@
 import React from 'react';
 import pizzaLogo from '../assets/img/pizza-logo.svg'
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import Search from "./Search";
 import {useSelector} from "react-redux";
 import {cartSelector} from "../redux/cartSlice";
@@ -10,6 +10,7 @@ import {removeFilters} from "../redux/filterSlice";
 const Header: React.FC = () => {
 
     const {items, totalPrice } = useSelector(cartSelector)
+    const location = useLocation()
     const dispatch = useAppDispatch()
 
     const clearFilters = () => {
@@ -30,7 +31,7 @@ const Header: React.FC = () => {
                         </div>
                     </div>
                 </Link>
-                <Search/>
+                {location.pathname !== '/cart' && <Search/>}
                 <div className="header__cart">
                     <Link to='/cart'>
                         <div className="button button--cart">
