@@ -40,7 +40,7 @@ const ExactPizza: React.FC = () => {
                     :
                     <div className={style.wrap}>
                         <div className={style.side}>
-                            <Link to={Number(id) > 0 ? `/pizza/${Number(id) - 1}` : '/pizza/0'} className={
+                            <Link to={Number(id) > 0 ? `/fullpizza/${Number(id) - 1}` : '/fullpizza/0'} className={
                                 Number(id) > 0
                                     ?
                                     style.btn
@@ -58,7 +58,7 @@ const ExactPizza: React.FC = () => {
                             <h3>Стоимость: {item.price} ₽</h3>
                         </div>
                         <div className={style.side}>
-                            <Link to={Number(id) < 9 ? `/pizza/${Number(id) + 1}` : '/pizza/9'} className={
+                            <Link to={Number(id) < 9 ? `/fullpizza/${Number(id) + 1}` : '/fullpizza/9'} className={
                                 Number(id) < 9
                                     ?
                                     style.btn

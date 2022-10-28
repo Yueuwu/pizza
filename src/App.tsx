@@ -23,7 +23,7 @@ function App() {
                                 <Cart />
                             </React.Suspense>
                         }/>
-                        <Route path='/pizza/:id' element={<ExactPizza/>}/>
+                        <Route path='/fullpizza/:id' element={<ExactPizza/>}/>
                         <Route path='*' element={<NotFound />}/>
                     </Routes>
 
