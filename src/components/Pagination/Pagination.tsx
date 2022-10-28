@@ -19,13 +19,13 @@ const Pagination: React.FC<PaginationProps> = ({page, changePage}) => {
     }
     return (
         <div className={style.wrap}>
-            <div onClick={decPage}>{'<'}</div>
+            <div className={style.pointer} onClick={decPage}>{'<'}</div>
             {
                 [...new Array(3)].map( (_, i) =>
-                    <div key={i} className={page === i+1 ? style.active : ''} onClick={() => changePage(i + 1)}>{i + 1}</div>
+                    <div key={i} className={page === i+1 ? style.active : style.normal} onClick={() => changePage(i + 1)}>{i + 1}</div>
                 )
             }
-            <div onClick={incPage}>{'>'}</div>
+            <div className={style.pointer} onClick={incPage}>{'>'}</div>
         </div>
     );
 };

@@ -1,11 +1,29 @@
 .wrap{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    width: 200px;
+    border: 1px solid rgba(244, 168, 16, 0.64);
+    border-radius: 20px;
+    height: 40px;
+    align-items: center;
+    font-size: 20px;
+    padding: 0 5px;
 }
 .active{
-    font-size: 25px;
+    scale: 1.1;
+    background-color: #fff;
+    width: 50px;
+    text-align: center;
     color: rgba(244,168,16,0.64);
 }
-div{
+.normal{
     margin-right: 5px;
+    width: 50px;
+    text-align: center;
+    padding: 0 7px;
+    cursor: default;
+}
+.pointer{
+    cursor: pointer;
 }
