@@ -5,7 +5,7 @@ const NotFound: React.FC = () => {
     return (
         <div>
             Ничего не найдено
-            <Link to='/'>
+            <Link to='/pizza/'>
                 <h1>На главную</h1>
             </Link>
         </div>
