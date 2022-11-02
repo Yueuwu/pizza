@@ -1,7 +1,6 @@
 <h1 style="color:#ffd500;" align="center">🍕 Internet pizza store</h1>
 
 ## Abilities
-
 <ul>
     <li style="font-size: 18px;">Pizzas loading</li>
     <li style="font-size: 18px;">Choice of category</li>
@@ -40,7 +39,7 @@
 ### `npm start`
 
 <h3>Runs the app in the development mode.</h3>
-<h3>Open [http://localhost:3000](http://localhost:3000) to view it in your browser.</h3>
+<h3>Open http://localhost:3000 to view it in your browser.</h3>
 
 
 <h1 style="color:#ffd500;" align="center">🍕 Интернет магазин пиццерии</h1>
@@ -85,6 +84,6 @@
 ### `npm start`
 
 <h3>Runs the app in the development mode.</h3>
-<h3>Open [http://localhost:3000](http://localhost:3000) to view it in your browser.</h3>
+<h3>Open http://localhost:3000 to view it in your browser.</h3>
 
 
