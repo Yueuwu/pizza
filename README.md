@@ -1,6 +1,6 @@
 <h1 style="color:#ffd500;" align="center">🍕 Internet pizza store</h1>
 
-## Abilities
+<h2> Abilities </h2>
 <ul>
     <li style="font-size: 18px;">Pizzas loading</li>
     <li style="font-size: 18px;">Choice of category</li>
