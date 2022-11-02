@@ -1,7 +1,7 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import debounce from 'lodash.debounce'
-import {useDispatch} from "react-redux";
-import {setSearchValue} from "../../../redux/filterSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {filterSelector, setSearchValue} from "../../../redux/filterSlice";
 import style from './search.module.css'
 
 const Search: React.FC = () => {
@@ -11,6 +11,13 @@ const Search: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const [value, setValue] = useState('')
+
+    const { searchValue } = useSelector(filterSelector)
+
+
+    useEffect(() => {
+        setValue(searchValue)
+    }, [searchValue])
 
     const updateSearchValue = useCallback(
         debounce(
