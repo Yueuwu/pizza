@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+<h1 style="color:#ffd500;" align="center">🍕 Internet pizza store</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Abilities
 
-## Available Scripts
+<ul>
+    <li style="font-size: 18px;">Pizzas loading</li>
+    <li style="font-size: 18px;">Choice of category</li>
+    <li style="font-size: 18px;">Sort</li>
+    <li style="font-size: 18px;">Pagination</li>
+    <li style="font-size: 18px;">Search</li>
+    <li style="font-size: 18px;">Basket (save implemented through localStorage)</li>
+    <li style="font-size: 18px;">Saving URL</li>
+    <li style="font-size: 18px;">Routing</li>
+    <li style="font-size: 18px;">Lazy loading</li>
+    <li style="font-size: 18px;">Loader</li>
+    <li style="font-size: 18px;">Debounce for search</li>
+</ul>
 
-In the project directory, you can run:
+<h2><span style="color:#ffd500;">👉</span> View <a href='https://yueuwu.github.io/pizza/'>demo</a></h2>
+<br>
+<h1>🛠️ Technologies:</h1>
+<ul>
+    <li style="font-size: 22px; font-weight: 600;">React</li>
+    <li style="font-size: 22px; font-weight: 600;">Redux Toolkit</li>
+    <li style="font-size: 22px; font-weight: 600;">TypeScript</li>
+    <li style="font-size: 22px;">React Router</li>
+    <li style="font-size: 22px;">Mock API</li>
+    <li style="font-size: 22px;">Axios</li>
+    <li style="font-size: 22px;">React Content Loader</li>
+    <li style="font-size: 22px;">Lodash.Debounce</li>
+    <li style="font-size: 22px;">qs</li>
+</ul>
+
+<h1>Great thanks to <a href="https://github.com/Archakov06">Archakov06</a></h1>
+
+<h2>Run locally: </h2>
+
+<h3>In the project directory, you can run:</h3>
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h3>Runs the app in the development mode.</h3>
+<h3>Open [http://localhost:3000](http://localhost:3000) to view it in your browser.</h3>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<h1 style="color:#ffd500;" align="center">🍕 Интернет магазин пиццерии</h1>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Возможности
 
-### `npm run build`
+<ul>
+    <li style="font-size: 18px;">Загрузка пицц</li>
+    <li style="font-size: 18px;">Выбор категории</li>
+    <li style="font-size: 18px;">Сортировка</li>
+    <li style="font-size: 18px;">Пагинация</li>
+    <li style="font-size: 18px;">Поиск</li>
+    <li style="font-size: 18px;">Корзина (сохранение реализовано через localStorage)</li>
+    <li style="font-size: 18px;">Сохранение URL</li>
+    <li style="font-size: 18px;">Роутинг</li>
+    <li style="font-size: 18px;">Lazy loading</li>
+    <li style="font-size: 18px;">Лоадер</li>
+    <li style="font-size: 18px;">Дебаунс для поиска</li>
+</ul>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2><span style="color:#ffd500;">👉</span> Посмотерть <a href='https://yueuwu.github.io/pizza/'>демо</a></h2>
+<br>
+<h1>🛠️ Технологии:</h1>
+<ul>
+    <li style="font-size: 22px; font-weight: 600;">React</li>
+    <li style="font-size: 22px; font-weight: 600;">Redux Toolkit</li>
+    <li style="font-size: 22px; font-weight: 600;">TypeScript</li>
+    <li style="font-size: 22px;">React Router</li>
+    <li style="font-size: 22px;">Mock API</li>
+    <li style="font-size: 22px;">Axios</li>
+    <li style="font-size: 22px;">React Content Loader</li>
+    <li style="font-size: 22px;">Lodash.Debounce</li>
+    <li style="font-size: 22px;">qs</li>
+</ul>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h1>Большая благодарность <a href="https://github.com/Archakov06">Archakov06</a></h1>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2>Запустить локально: </h2>
 
-### `npm run eject`
+<h3>In the project directory, you can run:</h3>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `npm start`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<h3>Runs the app in the development mode.</h3>
+<h3>Open [http://localhost:3000](http://localhost:3000) to view it in your browser.</h3>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
