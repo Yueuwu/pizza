@@ -13,6 +13,7 @@
     <li style="font-size: 18px;">Lazy loading</li>
     <li style="font-size: 18px;">Loader</li>
     <li style="font-size: 18px;">Debounce for search</li>
+    <li style="font-size: 22px;">Memoization</li>
 </ul>
 
 <h2><span style="color:#ffd500;">👉</span> View <a href='https://yueuwu.github.io/pizza/'>demo</a></h2>
@@ -22,6 +23,7 @@
     <li style="font-size: 22px; font-weight: 600;">React</li>
     <li style="font-size: 22px; font-weight: 600;">Redux Toolkit</li>
     <li style="font-size: 22px; font-weight: 600;">TypeScript</li>
+    <li style="font-size: 22px;">React Hooks</li>
     <li style="font-size: 22px;">React Router</li>
     <li style="font-size: 22px;">Mock API</li>
     <li style="font-size: 22px;">Axios</li>
