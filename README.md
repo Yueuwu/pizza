@@ -34,15 +34,6 @@
 
 <h1>Great thanks to <a href="https://github.com/Archakov06">Archakov06</a></h1>
 
-<p>Run locally: </p>
-
-<p>In the project directory, you can run:</p>
-
-### `npm start`
-
-<p>Runs the app in the development mode.</p>
-<p>Open http://localhost:3000 to view it in your browser.</p>
-
 
 <h1 style="color:#ffd500;" align="center">🍕 Интернет магазин пиццерии</h1>
 
@@ -80,14 +71,5 @@
 </ul>
 
 <h1>Большая благодарность <a href="https://github.com/Archakov06">Archakov06</a></h1>
-
-<p>Запустить локально: </p>
-
-<p>In the project directory, you can run:</p>
-
-### `npm start`
-
-<p>Runs the app in the development mode.</p>
-<p>Open http://localhost:3000 to view it in your browser.</p>
 
 
