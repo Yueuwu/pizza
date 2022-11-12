@@ -34,14 +34,14 @@
 
 <h1>Great thanks to <a href="https://github.com/Archakov06">Archakov06</a></h1>
 
-<h2>Run locally: </h2>
+<p>Run locally: </p>
 
-<h3>In the project directory, you can run:</h3>
+<p>In the project directory, you can run:</p>
 
 ### `npm start`
 
-<h3>Runs the app in the development mode.</h3>
-<h3>Open http://localhost:3000 to view it in your browser.</h3>
+<p>Runs the app in the development mode.</p>
+<p>Open http://localhost:3000 to view it in your browser.</p>
 
 
 <h1 style="color:#ffd500;" align="center">🍕 Интернет магазин пиццерии</h1>
@@ -60,6 +60,7 @@
     <li style="font-size: 18px;">Lazy loading</li>
     <li style="font-size: 18px;">Лоадер</li>
     <li style="font-size: 18px;">Дебаунс для поиска</li>
+    <li>Мемоизация</li>
 </ul>
 
 <h2><span style="color:#ffd500;">👉</span> Посмотерть <a href='https://yueuwu.github.io/pizza/'>демо</a></h2>
@@ -69,6 +70,7 @@
     <li style="font-size: 22px; font-weight: 600;">React</li>
     <li style="font-size: 22px; font-weight: 600;">Redux Toolkit</li>
     <li style="font-size: 22px; font-weight: 600;">TypeScript</li>
+    <li>React Hooks</li>
     <li style="font-size: 22px;">React Router</li>
     <li style="font-size: 22px;">Mock API</li>
     <li style="font-size: 22px;">Axios</li>
@@ -79,13 +81,13 @@
 
 <h1>Большая благодарность <a href="https://github.com/Archakov06">Archakov06</a></h1>
 
-<h2>Запустить локально: </h2>
+<p>Запустить локально: </p>
 
-<h3>In the project directory, you can run:</h3>
+<p>In the project directory, you can run:</p>
 
 ### `npm start`
 
-<h3>Runs the app in the development mode.</h3>
-<h3>Open http://localhost:3000 to view it in your browser.</h3>
+<p>Runs the app in the development mode.</p>
+<p>Open http://localhost:3000 to view it in your browser.</p>
 
 
