@@ -7,7 +7,7 @@ import ExactPizza from "./components/pages/ExactPizza/ExactPizza";
 import React from "react";
 import Loader from "./components/Loader/Loader";
 
-const Cart = React.lazy(() => import(/*webpackChunkName: "Cart"*/ "./components/pages/Cart"))
+const Cart = React.lazy(() => import(/*webpackChunkName: "Cart"*/ "./components/pages/Cart")) //
 
 function App() {
 
